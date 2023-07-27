@@ -27,7 +27,7 @@ class SendNotification extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Send a custom template defined notification to a given user or all users';
 
     /**
      * Create a new command instance.
