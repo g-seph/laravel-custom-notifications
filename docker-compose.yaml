@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+
+  db:
+    image: mysql:8.0.33-debian
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - "./docker-volumes/mysql-data:/var/lib/mysql"
+    ports:
+      - "${DB_PORT}:3306"
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "${MAIL_PORT}:1025"
+      - "8025:8025"
+    logging:
+      driver: none
